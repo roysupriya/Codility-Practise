@@ -1,0 +1,32 @@
+// 1041 has binary 10000010001. Has 2 binary gaps (zeros between 1s) of 5 and 3 lenghts. Return 5.
+
+class Solution {
+    public int solution(int N) {
+        // write your code in Java SE 8
+
+        int count = 0;
+        boolean flagCount = false;
+        int max = 0;
+        while(N >= 1) {
+            int remainder = N%2;
+            N = N/2;
+
+            if(remainder==1) {
+                if(!flagCount)
+                    flagCount = true;
+                else {  
+                    if(max != 0){
+                        if(max < count)
+                            max = count;
+                    } else {
+                        max = count;
+                        count = 0;
+                    }
+                }
+            } 
+            if(remainder==0 && flagCount)
+                count++;
+        }
+        return max;
+    }
+}
