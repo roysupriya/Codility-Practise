@@ -1,6 +1,9 @@
 /* 
 Problem: https://app.codility.com/programmers/lessons/4-counting_elements/frog_river_one/
-Results:
+Results: 
+ - 18% https://app.codility.com/demo/results/trainingW84R5P-KBM/
+ - 27% https://app.codility.com/demo/results/training8UKYYV-2P6/
+ - 100% https://app.codility.com/demo/results/trainingNR67NS-G8B/
 
 A small frog wants to get to the other side of a river. The frog is initially located on one bank of the river (position 0) and wants to get to the opposite bank (position X+1). Leaves fall from a tree onto the surface of the river.
 
@@ -46,3 +49,39 @@ N and X are integers within the range [1..100,000];
 each element of array A is an integer within the range [1..X].
 */
 
+// Time: O(N), Space: O(N)
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int X, int[] A) {
+        // Implement your solution here
+
+        HashSet<Integer> set = new HashSet<>();
+
+        // Add all the sequential positions in set
+        for(int i=1; i<=X; i++){
+            set.add(i);
+        }
+
+        // For every position encountered in the array, remove from set if exists
+        // When set is empty after removal, the index is our ans
+        for(int i=0; i<A.length; i++){
+            // Remove the position in set if exists
+            if(set.size() != 0 && set.contains(A[i])){
+                set.remove(A[i]);
+            }
+            
+            // Return index is set is empty
+            if (set.size() == 0){
+                return i;
+            }
+        }
+
+        // If set was not emptied, some seconds were never found when leaf fell on the position
+        return -1;
+    }
+}
