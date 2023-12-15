@@ -3,7 +3,8 @@ Problem: https://app.codility.com/programmers/lessons/4-counting_elements/frog_r
 Results: 
  - 18% https://app.codility.com/demo/results/trainingW84R5P-KBM/
  - 27% https://app.codility.com/demo/results/training8UKYYV-2P6/
- - 100% https://app.codility.com/demo/results/trainingNR67NS-G8B/
+ - 100% Double pass: https://app.codility.com/demo/results/trainingNR67NS-G8B/
+ - 100% - Single pass: https://app.codility.com/demo/results/trainingDCDRPU-PEH/
 
 A small frog wants to get to the other side of a river. The frog is initially located on one bank of the river (position 0) and wants to get to the opposite bank (position X+1). Leaves fall from a tree onto the surface of the river.
 
@@ -49,7 +50,7 @@ N and X are integers within the range [1..100,000];
 each element of array A is an integer within the range [1..X].
 */
 
-// Time: O(N), Space: O(N)
+// Time: O(N), Space: O(N) - Double Pass
 // you can also use imports, for example:
 import java.util.*;
 
@@ -77,6 +78,36 @@ class Solution {
             
             // Return index is set is empty
             if (set.size() == 0){
+                return i;
+            }
+        }
+
+        // If set was not emptied, some seconds were never found when leaf fell on the position
+        return -1;
+    }
+}
+
+
+// Single Pass
+// Time: O(N), Space: O(N)
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int X, int[] A) {
+        // Implement your solution here
+
+        // Single pass
+        HashSet<Integer> set = new HashSet<>();
+
+        // Add to set, and after each addition check whether we have completed all positions addition, if so return index;
+        for(int i=0; i<A.length; i++){
+            set.add(A[i]);
+
+            if(set.size() == X){
                 return i;
             }
         }
