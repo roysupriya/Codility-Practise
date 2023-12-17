@@ -1,5 +1,5 @@
 // Time: O(N), Space: O(N)
-// Results: Correctness: 66% (4 out of 12 cases failed)
+// Results: Correctness: 66% (4 out of 12 cases failed probably due to min value check missing and because of adding = in max check, adding it now)
 https://app.codility.com/c/feedback/99XDDE-C9Q/
 
 // you can also use imports, for example:
@@ -70,7 +70,7 @@ class Solution {
          } 
       }
 
-      if(machine.empty() || machine.peek() >= (Math.pow(2,20) - 1))
+      if(machine.empty() || machine.peek() >= Math.pow(2,20) || machine.peek() < 0)
         return -1;
 
       return machine.pop();
