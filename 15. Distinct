@@ -1,0 +1,74 @@
+/*
+Problem: https://app.codility.com/programmers/lessons/6-sorting/distinct/
+Results:
+ Using hashset - https://app.codility.com/demo/results/training5TTA7B-3D6/
+ Using in-built sort - https://app.codility.com/demo/results/training3CP4HF-FJC/
+
+Write a function
+
+class Solution { public int solution(int[] A); }
+
+that, given an array A consisting of N integers, returns the number of distinct values in array A.
+
+For example, given array A consisting of six elements such that:
+
+ A[0] = 2    A[1] = 1    A[2] = 1
+ A[3] = 2    A[4] = 3    A[5] = 1
+the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [0..100,000];
+each element of array A is an integer within the range [−1,000,000..1,000,000].
+
+*/
+
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+
+        // Corner case
+        if(A.length == 0){
+            return 0;
+        }
+
+        /*
+        1. Approach 1: Using HashSet with extra space
+        2. Approach 2: Using in-built Sort function and then traverse  
+        3. Approach 3: Using counting sort (shouldn't go for it for large input sizes)
+        */
+
+        /* Approach 1: Using HashSet with extra space 
+            Time: O(n), Space: O(n)
+        */
+        // Set<Integer> set = new HashSet<>();
+
+        // for(int i=0; i<A.length; i++){
+        //     set.add(A[i]);
+        // }
+
+        // return set.size();
+
+        /* Approach 2: Using in-built sort and traversal
+            Time: O(nlogn), Space: O(1)
+        */
+
+        // Approach 2: Sort and then traverse
+        Arrays.sort(A);
+        int distinct = 1;
+
+        // Whenever encountering new number, increment the distinct count
+         for(int i=1; i<A.length; i++){
+            if(A[i-1] != A[i]){
+                distinct++;
+            }
+        }
+
+        return distinct;
+    }
+}
