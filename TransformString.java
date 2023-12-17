@@ -1,5 +1,5 @@
 // Time: O(N), Space: O(N)
-// Correctness: 100%, Performance: 55% => Result: 76% 
+// Correctness: 100%, Performance: 55% (3 out of 8 cases failed) => Result: 76%   
 // you can also use imports, for example:
 import java.util.*;
 
