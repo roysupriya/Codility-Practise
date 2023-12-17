@@ -1,0 +1,26 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int A, int B) {
+        // Implement your solution here
+
+        double product = (double)A * (double)B;
+        int countOnes = 0;
+        double binaryBit = -1;
+
+        while(product>0){
+            binaryBit = (long)product%2;
+            product = Math.floor(product/2.0);
+
+            if(binaryBit == 1){
+                countOnes++;
+            }
+        }
+        
+        return countOnes;
+    }
+}
