@@ -1,5 +1,6 @@
 // Time: O(N), Space: O(N)
-// Results: Correctness: 66% (4 out of 12 cases failed
+// Results: Correctness: 66% (4 out of 12 cases failed)
+https://app.codility.com/c/feedback/99XDDE-C9Q/
 
 // you can also use imports, for example:
 import java.util.*;
